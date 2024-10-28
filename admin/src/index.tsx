@@ -11,7 +11,7 @@ const name = pluginPkg.strapi.name;
 export default {
   register(app: any) {
     app.customFields.register({
-      name: 'autocomplete',
+      name: 'AutoComplete',
       pluginId,
       type: "string",
       intlLabel: {
@@ -27,6 +27,28 @@ export default {
         Input: async () => import(/* webpackChunkName: "input-uuid-component" */ "./components/Input"),
       },
       options: {
+        base: [
+          {
+            sectionTitle: {
+              id: 'global.basicSettings',
+              defaultMessage: 'Settings'
+            },
+            items: [
+              {
+                name: 'apiUrl',
+                type: 'input',
+                intlLabel: {
+                  id: 'form.attribute.item.apiUrl',
+                  defaultMessage: 'API Url',
+                },
+                description: {
+                  id: 'form.attribute.item.apiUrl.description',
+                  defaultMessage: 'Endpoint to fetch the options for the select input',
+                },
+              },
+            ]
+          }
+        ],
         advanced: [
           {
             sectionTitle: {
