@@ -29,24 +29,16 @@ export default {
       options: {
         base: [
           {
-            sectionTitle: {
-              id: 'global.baseSettings',
-              defaultMessage: 'Settings',
+            intlLabel: {
+              id: 'autocomplete.apiUrl.label',
+              defaultMessage: 'API Url',
             },
-            items: [
-              {
-                name: 'apiUrl',
-                type: 'input',
-                intlLabel: {
-                  id: 'form.attribute.item.apiUrl',
-                  defaultMessage: 'API Url',
-                },
-                description: {
-                  id: 'form.attribute.item.apiUrl.description',
-                  defaultMessage: 'The API url to fetch options',
-                },
-              },
-            ],
+            description: {
+              id: 'autocomplete.apiUrl.description',
+              defaultMessage: "Endpoint to fetch the options",
+            },
+            name: 'options.apiUrl',
+            type: 'text',
           },
         ],
         advanced: [
@@ -56,6 +48,18 @@ export default {
               defaultMessage: 'Settings',
             },
             items: [
+              {
+                name: 'required',
+                type: 'checkbox',
+                intlLabel: {
+                  id:  'ckeditor.required.label',
+                  defaultMessage: 'Required field',
+                },
+                description: {
+                  id:  'ckeditor.required.description',
+                  defaultMessage: "You won't be able to create an entry if this field is empty",
+                },
+              },
               {
                 name: 'private',
                 type: 'checkbox',
