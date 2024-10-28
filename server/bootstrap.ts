@@ -10,7 +10,7 @@ export default ({ strapi }: { strapi: Strapi }) => {
 
     const attributes = Object.keys(contentType.attributes).filter((attrKey) => {
       const attribute = contentType.attributes[attrKey]
-      if(attribute.customField === `plugin::${pluginId}.snowflake`) {
+      if(attribute.customField === `plugin::${pluginId}.autocomplete`) {
         return true
       }
     })
@@ -25,7 +25,7 @@ export default ({ strapi }: { strapi: Strapi }) => {
   const modelsToSubscribe = Object.keys(models)
 
   const { service } = strapi.plugin(pluginId);
-  const { generate } = service('snowflake');
+  const { generate } = service('autocomplete');
 
   strapi.db!.lifecycles.subscribe((event) => {
     if (event.action === 'beforeCreate' && modelsToSubscribe.includes(event.model.uid)) {

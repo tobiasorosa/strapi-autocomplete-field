@@ -35,8 +35,7 @@
   },
   "strapi": {
     "kind": "plugin",
-    "name": "autocomplete-field",
-    "displayName": "AutoComplete",
+    "name": "autocomplete",
     "description": "AutoComplete Custom Field with options fetched from API"
   },
   "name": "strapi-autocomplete-field",
