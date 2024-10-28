@@ -6,73 +6,14 @@
 
 const PluginIcon = () => {
   return (
-    <svg
-      fill="#000000"
-      width="24px"
-      height="24px"
-      viewBox="0 0 24 24"
-      id="snow"
-      data-name="Line Color"
-      xmlns="http://www.w3.org/2000/svg"
-      className="icon line-color"
-    >
+    <svg width="21" height="16" viewBox="0 0 21 16" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
-        id="primary"
-        d="M3,12H21M12,3V21"
-        style={{
-          fill: 'none',
-          stroke: '#fff',
-          strokeLinecap: 'round',
-          strokeLinejoin: 'round',
-          strokeWidth: 2,
-        }}
+        d="M3.04672 6.09381V8.01164C4.36603 8.01164 6.09343 6.09381 6.09343 3.04691C6.09343 1.38846 4.70506 0 3.04672 0C1.38838 0 0 1.38846 0 3.04691C0 4.70535 1.38838 6.09381 3.04672 6.09381Z"
+        fill="#1C2024"
       />
-      <polyline
-        id="secondary"
-        points="19 9 17 12 19 15"
-        style={{
-          fill: 'none',
-          stroke: '#2CA9BC',
-          strokeLinecap: 'round',
-          strokeLinejoin: 'round',
-          strokeWidth: 2,
-        }}
-      />
-      <polyline
-        id="secondary-2"
-        data-name="secondary"
-        points="5 15 7 12 5 9"
-        style={{
-          fill: 'none',
-          stroke: '#2CA9BC',
-          strokeLinecap: 'round',
-          strokeLinejoin: 'round',
-          strokeWidth: 2,
-        }}
-      />
-      <polyline
-        id="secondary-3"
-        data-name="secondary"
-        points="15 19 12 17 9 19"
-        style={{
-          fill: 'none',
-          stroke: '#2CA9BC',
-          strokeLinecap: 'round',
-          strokeLinejoin: 'round',
-          strokeWidth: 2,
-        }}
-      />
-      <polyline
-        id="secondary-4"
-        data-name="secondary"
-        points="9 5 12 7 15 5"
-        style={{
-          fill: 'none',
-          stroke: '#2CA9BC',
-          strokeLinecap: 'round',
-          strokeLinejoin: 'round',
-          strokeWidth: 2,
-        }}
+      <path
+        d="M12.595 0.0185547C17.0081 0.0185547 20.5855 3.59603 20.5855 8.00907C20.5855 12.4221 17.008 15.9996 12.595 15.9996H7.54492V0.0185547H12.595Z"
+        fill="#3E63DD"
       />
     </svg>
   );
