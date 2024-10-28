@@ -1,5 +1,5 @@
 {
-  "version": "0.0.0",
+  "version": "0.1.0",
   "keywords": ["strapi"],
   "type": "commonjs",
   "exports": {
@@ -58,7 +58,7 @@
     "displayName": "AutoComplete",
     "description": "AutoComplete Custom Field with options fetched from API"
   },
-  "name": "autocomplete-field",
+  "name": "strapi-autocomplete-field",
   "description": "AutoComplete Custom Field with options fetched from API",
   "license": "MIT",
   "author": {
