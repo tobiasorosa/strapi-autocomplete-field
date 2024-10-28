@@ -1,6 +1,11 @@
-import { useEffect, useRef } from 'react';
+/**
+ *
+ * Initializer
+ *
+ */
 
-import { PLUGIN_ID } from '../pluginId';
+import { useEffect, useRef } from 'react';
+import pluginId from '../../../../utils/pluginId';
 
 type InitializerProps = {
   setPlugin: (id: string) => void;
@@ -10,10 +15,10 @@ const Initializer = ({ setPlugin }: InitializerProps) => {
   const ref = useRef(setPlugin);
 
   useEffect(() => {
-    ref.current(PLUGIN_ID);
+    ref.current(pluginId);
   }, []);
 
   return null;
 };
 
-export { Initializer };
+export default Initializer;

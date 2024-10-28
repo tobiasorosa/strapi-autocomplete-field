@@ -1,6 +1,6 @@
 {
   "version": "0.0.0",
-  "keywords": [],
+  "keywords": ["strapi"],
   "type": "commonjs",
   "exports": {
     "./package.json": "./package.json",
@@ -20,39 +20,37 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "build": "strapi-plugin build",
-    "watch": "strapi-plugin watch",
-    "watch:link": "strapi-plugin watch:link",
-    "verify": "strapi-plugin verify",
-    "test:ts:front": "run -T tsc -p admin/tsconfig.json",
-    "test:ts:back": "run -T tsc -p server/tsconfig.json"
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tobiasorosa/strapi-autocomplete-field.git"
+  },
+  "resolutions": {
+    "@types/react": "^17.0.0 || ^18.0.0"
   },
   "dependencies": {
-    "@strapi/design-system": "^2.0.0-rc.11",
-    "@strapi/icons": "^2.0.0-rc.11",
-    "react-intl": "^6.8.0"
+    "@strapi/design-system": "^1.6.3",
+    "@strapi/helper-plugin": "^4.6.0",
+    "@strapi/icons": "^1.6.3",
+    "prop-types": "^15.7.2"
   },
   "devDependencies": {
-    "@strapi/strapi": "^5.1.0",
-    "@strapi/sdk-plugin": "^5.2.7",
-    "prettier": "^3.3.3",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0",
-    "styled-components": "^6.1.13",
-    "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.1",
-    "@strapi/typescript-utils": "^5.1.0",
-    "typescript": "^5.6.3"
+    "@strapi/typescript-utils": "^4.6.0",
+    "@types/react": "^17.0.53",
+    "@types/react-dom": "^18.0.28",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/styled-components": "^5.1.32",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.3.4",
+    "styled-components": "^5.3.6",
+    "typescript": "5.0.4"
   },
   "peerDependencies": {
-    "@strapi/strapi": "^5.1.0",
-    "@strapi/sdk-plugin": "^5.2.7",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
-    "react-router-dom": "^6.27.0",
-    "styled-components": "^6.1.13"
+    "@strapi/strapi": "4.25.10",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-router-dom": "^5.2.0",
+    "styled-components": "^5.2.1"
   },
   "strapi": {
     "kind": "plugin",
@@ -63,5 +61,17 @@
   "name": "autocomplete-field",
   "description": "AutoComplete Custom Field with options fetched from API",
   "license": "MIT",
-  "author": "Tobias Rosa <tobias.rosa2000@gmail.com>"
+  "author": {
+    "name": "Tobias Rosa",
+    "email": "tobias.rosa2000@gmail.com",
+    "url": "https://github.com/tobiasorosa"
+  },
+  "engines": {
+    "node": ">=18.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "scripts": {
+    "develop": "tsc -p tsconfig.server.json -w",
+    "build": "tsc -p tsconfig.server.json"
+  }
 }
