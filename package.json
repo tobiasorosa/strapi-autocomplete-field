@@ -38,7 +38,7 @@
     "name": "autocomplete",
     "description": "AutoComplete Custom Field with options fetched from API"
   },
-  "name": "strapi-autocomplete-field",
+  "name": "strapi-plugin-autocomplete",
   "description": "AutoComplete Custom Field with options fetched from API",
   "license": "MIT",
   "author": {
