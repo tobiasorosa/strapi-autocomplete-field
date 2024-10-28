@@ -4,8 +4,6 @@
  *
  */
 
-import { Puzzle } from "@strapi/icons";
-
 const PluginIcon = () => {
   return (
     <svg

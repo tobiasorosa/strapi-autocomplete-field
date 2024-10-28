@@ -1,5 +1,5 @@
 /**
- * autocomplete service
+ * snowflake service
  */
 
 import { Strapi } from "@strapi/strapi";
