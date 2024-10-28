@@ -1,7 +1,3 @@
 /docs/
 *.iml
 *ignore
-/dist
-dist
-dist/
-dist/*
