@@ -1,11 +1,6 @@
-// import { Field, FieldAction, FieldError, FieldHint, FieldInput, FieldLabel } from '@strapi/design-system/Field'
-// import { Flex } from '@strapi/design-system/Flex'
-// import { Stack } from '@strapi/design-system/Stack'
-// import Refresh from '@strapi/icons/Refresh'
-import React, { useEffect, useRef, useState } from 'react'
+import { useRef } from 'react'
 import { useIntl } from 'react-intl'
 import styled from 'styled-components'
-import { Refresh } from "@strapi/icons"
 
 
 import {
@@ -16,7 +11,6 @@ import {
   FieldHint,
   FieldInput,
   FieldLabel,
-  Icon,
   Stack,
   Flex,
 } from '@strapi/design-system';
