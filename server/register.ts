@@ -3,7 +3,7 @@ import pluginId from '../utils/pluginId';
 
 export default ({ strapi }: { strapi: Strapi }) => {
   strapi.customFields.register({
-    name: 'snowflake',
+    name: 'autocomplete',
     plugin: pluginId,
     type: 'uid',
   })
