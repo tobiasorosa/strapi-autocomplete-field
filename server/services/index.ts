@@ -1,3 +1,3 @@
-import autocomplete from "./autocomplete";
+import snowflake from "./snowflake";
 
-export default { autocomplete };
+export default { snowflake };

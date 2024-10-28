@@ -3,8 +3,7 @@
 
   "compilerOptions": {
     "target": "ESNext",
-    "strict": true,
-    "jsx": "react-jsx"
+    "strict": true
   },
 
   "include": ["admin", "custom.d.ts"],

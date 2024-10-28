@@ -11,16 +11,16 @@ const name = pluginPkg.strapi.name;
 export default {
   register(app: any) {
     app.customFields.register({
-      name: 'autocomplete',
+      name: 'snowflake',
       pluginId,
       type: "string",
       intlLabel: {
         id: getTrad("form.label"),
-        defaultMessage: "autocomplete",
+        defaultMessage: "snowflake",
       },
       intlDescription: {
         id: getTrad("form.description"),
-        defaultMessage: "Autocomplete Field",
+        defaultMessage: "Generates a unique snowflake",
       },
       icon: PluginIcon,
       components: {
