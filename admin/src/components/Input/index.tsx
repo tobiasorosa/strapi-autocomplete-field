@@ -1,4 +1,4 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { useIntl } from 'react-intl'
 import styled from 'styled-components'
 
@@ -9,11 +9,27 @@ import {
   FieldAction,
   FieldError,
   FieldHint,
-  FieldInput,
   FieldLabel,
   Stack,
   Flex,
+  ComboboxOption,
+  Combobox
 } from '@strapi/design-system';
+import axios from 'axios';
+
+interface CFAttribute {
+  customField: string;
+  options: {
+    apiUrl: string;
+    authToken: string;
+  }
+  type: string;
+}
+
+interface IOption {
+  id: string;
+  name: string;
+}
 
 export const FieldActionWrapper = styled(FieldAction)`
   svg {
@@ -32,6 +48,7 @@ export const FieldActionWrapper = styled(FieldAction)`
 `
 
 const Input = ({
+  attribute,
   description,
   placeholder,
   disabled,
@@ -43,6 +60,7 @@ const Input = ({
   value: initialValue = "",
   ...props
 }: {
+  attribute: CFAttribute
   description: any
   placeholder: string
   disabled: boolean
@@ -55,6 +73,32 @@ const Input = ({
 }) => {
   const { formatMessage } = useIntl()
   const ref = useRef("")
+  const [options, setOptions] = useState<IOption[]>([])
+
+  console.log(attribute.options.apiUrl);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let options
+        if (attribute.options.authToken) {
+          options = {
+            headers: {
+              Authorization: `Bearer ${attribute.options.authToken}`,
+            }
+          }
+        }
+        const response = await axios.get(attribute.options.apiUrl, options);
+
+        console.log(response.data)
+        setOptions(response.data);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+
+    fetchData();
+  }, [])
 
   return (
     <Box>
@@ -68,16 +112,11 @@ const Input = ({
           <Flex>
             <FieldLabel>{formatMessage(intlLabel)}</FieldLabel>
           </Flex>
-          <FieldInput
-            onChange={onChange}
-            labelAction={labelAction}
-            placeholder={placeholder}
-            disabled={true}
-            required
-            value={initialValue}
-            ref={ref}
-            readOnly
-          />
+          <Combobox value={initialValue} onChange={onChange} ref={ref} placeholder="Selecione" error={error}>
+            {options.map(opt => (
+              <ComboboxOption value={opt.id}>{opt.name}</ComboboxOption>
+            ))}
+          </Combobox>
           <FieldHint />
           <FieldError />
         </Stack>

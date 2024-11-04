@@ -16,7 +16,7 @@ export default {
       type: "string",
       intlLabel: {
         id: getTrad("form.label"),
-        defaultMessage: "autocomplete",
+        defaultMessage: "AutoComplete",
       },
       intlDescription: {
         id: getTrad("form.description"),
@@ -38,6 +38,18 @@ export default {
               defaultMessage: "Endpoint to fetch the options",
             },
             name: 'options.apiUrl',
+            type: 'text',
+          },
+          {
+            intlLabel: {
+              id: 'autocomplete.authToken.label',
+              defaultMessage: 'Auth Token',
+            },
+            description: {
+              id: 'autocomplete.authToken.description',
+              defaultMessage: "Bearer Authorization Token if needed for the endpoint call",
+            },
+            name: 'options.authToken',
             type: 'text',
           },
         ],
