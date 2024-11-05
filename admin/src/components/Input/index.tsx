@@ -5,10 +5,7 @@ import styled from 'styled-components'
 
 import {
   Box,
-  Field,
   FieldAction,
-  FieldError,
-  FieldHint,
   FieldLabel,
   Stack,
   Flex,
@@ -102,25 +99,16 @@ const Input = ({
 
   return (
     <Box>
-      <Field
-        id={name}
-        name={name}
-        hint={description && formatMessage(description)}
-        error={error}
-      >
         <Stack spacing={1}>
           <Flex>
             <FieldLabel>{formatMessage(intlLabel)}</FieldLabel>
           </Flex>
-          <Combobox name={name} value={initialValue} onChange={(value: string) => onChange(value)} ref={ref} placeholder="Selecione" error={error}>
+          <Combobox value={initialValue} onChange={(value: string) => onChange(value)} ref={ref} placeholder="Selecione" error={error}>
             {options.map(opt => (
               <ComboboxOption value={opt.id} key={opt.id}>{opt.name}</ComboboxOption>
             ))}
           </Combobox>
-          <FieldError />
-          <FieldHint />
         </Stack>
-      </Field>
     </Box>
   )
 }
