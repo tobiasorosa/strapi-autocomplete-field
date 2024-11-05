@@ -68,7 +68,7 @@ const Input = ({
   intlLabel: any
   labelAction: string
   name: string
-  onChange(v: string): void
+  onChange(v: any): void
   value: string
 }) => {
   const { formatMessage } = useIntl()
@@ -93,12 +93,14 @@ const Input = ({
         console.log(response.data)
         setOptions(response.data);
 
-        onChange(options[0].id);
+        onChange('1');
 
       } catch (err) {
         console.error(err);
       }
     };
+
+    console.log(initialValue)
 
     fetchData();
   }, [])
@@ -117,7 +119,7 @@ const Input = ({
           <Flex>
             <FieldLabel>{formatMessage(intlLabel)}</FieldLabel>
           </Flex>
-          <Combobox name={name} value={initialValue} onChange={(value: string) => onChange(value)} ref={ref} placeholder="Selecione" error={error}>
+          <Combobox name={name} value={initialValue} onChange={(value: string) => onChange({name, value})} ref={ref} placeholder="Selecione" error={error}>
             {options.map(opt => (
               <ComboboxOption value={opt.id} key={opt.id}>{opt.name}</ComboboxOption>
             ))}
