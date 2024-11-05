@@ -5,7 +5,10 @@ import styled from 'styled-components'
 
 import {
   Box,
+  Field,
   FieldAction,
+  FieldError,
+  FieldHint,
   FieldLabel,
   Stack,
   Flex,
@@ -46,16 +49,33 @@ export const FieldActionWrapper = styled(FieldAction)`
 
 const Input = ({
   attribute,
+  description,
+  placeholder,
+  disabled,
+  error,
+  intlLabel,
+  labelAction,
+  name,
+  onChange,
+  value: initialValue = "",
   ...props
 }: {
   attribute: CFAttribute
+  description: any
+  placeholder: string
+  disabled: boolean
+  error: boolean
+  intlLabel: any
+  labelAction: string
+  name: string
+  onChange(v: string): void
+  value: string
 }) => {
+  const { formatMessage } = useIntl()
+  const ref = useRef("")
   const [options, setOptions] = useState<IOption[]>([])
-  const [selectedOption, setSelectedOption] = useState('');
 
-  function onSelected(item: string) {
-    setSelectedOption(item);
-  }
+  console.log(attribute.options.apiUrl);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -70,6 +90,7 @@ const Input = ({
         }
         const response = await axios.get(attribute.options.apiUrl, options);
 
+        console.log(response.data)
         setOptions(response.data);
       } catch (err) {
         console.error(err);
@@ -79,15 +100,29 @@ const Input = ({
     fetchData();
   }, [])
 
+  console.log(name)
+
   return (
     <Box>
+      <Field
+        id={name}
+        name={name}
+        hint={description && formatMessage(description)}
+        error={error}
+      >
         <Stack spacing={1}>
-          <Combobox {...props}>
+          <Flex>
+            <FieldLabel>{formatMessage(intlLabel)}</FieldLabel>
+          </Flex>
+          <Combobox name={name} value={initialValue} onChange={(value: string) => onChange(value)} ref={ref} placeholder="Selecione" error={error}>
             {options.map(opt => (
               <ComboboxOption value={opt.id} key={opt.id}>{opt.name}</ComboboxOption>
             ))}
           </Combobox>
+          <FieldHint />
+          <FieldError />
         </Stack>
+      </Field>
     </Box>
   )
 }
