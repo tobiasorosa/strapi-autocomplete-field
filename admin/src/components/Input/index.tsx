@@ -1,7 +1,6 @@
-import { useEffect, useRef, useState } from 'react'
-import { useIntl } from 'react-intl'
-import styled from 'styled-components'
-
+import { useEffect, useState } from 'react';
+import { useIntl } from 'react-intl';
+import styled from 'styled-components';
 
 import {
   Box,
@@ -13,7 +12,7 @@ import {
   Stack,
   Flex,
   ComboboxOption,
-  Combobox
+  Combobox,
 } from '@strapi/design-system';
 import axios from 'axios';
 
@@ -22,7 +21,7 @@ interface CFAttribute {
   options: {
     apiUrl: string;
     authToken: string;
-  }
+  };
   type: string;
 }
 
@@ -45,7 +44,7 @@ export const FieldActionWrapper = styled(FieldAction)`
       fill: ${({ theme }) => theme.colors.primary600};
     }
   }
-`
+`;
 
 const Input = ({
   attribute,
@@ -57,79 +56,82 @@ const Input = ({
   labelAction,
   name,
   onChange,
-  value: initialValue = "",
+  value: initialValue = '',
   ...props
 }: {
-  attribute: CFAttribute
-  description: any
-  placeholder: string
-  disabled: boolean
-  error: boolean
-  intlLabel: any
-  labelAction: string
-  name: string
-  onChange(v: any): void
-  value: string
+  attribute: CFAttribute;
+  description: any;
+  placeholder: string;
+  disabled: boolean;
+  error: boolean;
+  intlLabel: any;
+  labelAction: string;
+  name: string;
+  onChange(v: any): void;
+  value: string;
 }) => {
-  const { formatMessage } = useIntl()
-  const ref = useRef("")
-  const [options, setOptions] = useState<IOption[]>([])
+  const { formatMessage } = useIntl();
+  const [options, setOptions] = useState<IOption[]>([]);
 
-  console.log(attribute.options.apiUrl);
+  console.log('Props:', {
+    name,
+    initialValue,
+    onChange,
+    attribute,
+  });
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let config
+        let config;
         if (attribute.options.authToken) {
           config = {
             headers: {
               Authorization: `Bearer ${attribute.options.authToken}`,
-            }
-          }
+            },
+          };
         }
         const response = await axios.get(attribute.options.apiUrl, config);
 
-        console.log(response.data)
         setOptions(response.data);
 
         onChange('1');
-
       } catch (err) {
         console.error(err);
       }
     };
 
-    console.log(initialValue)
-
     fetchData();
-  }, [])
-
-  console.log(name)
+  }, []);
 
   return (
     <Box>
-      <Field
-        id={name}
-        name={name}
-        hint={description && formatMessage(description)}
-        error={error}
-      >
+      <Field id={name} name={name} hint={description && formatMessage(description)} error={error}>
         <Stack spacing={1}>
           <Flex>
             <FieldLabel>{formatMessage(intlLabel)}</FieldLabel>
           </Flex>
-          <Combobox name={name} value={initialValue} onChange={(value: string) => onChange({name, value})} ref={ref} placeholder="Selecione" error={error}>
-            {options.map(opt => (
-              <ComboboxOption value={opt.id} key={opt.id}>{opt.name}</ComboboxOption>
-            ))}
-          </Combobox>
+          {name && onChange && (
+            <Combobox
+              name={name}
+              value={initialValue}
+              onChange={(value: any) => onChange({ name, value })}
+              placeholder="Selecione"
+              error={error}
+            >
+              {options.map((opt) => (
+                <ComboboxOption value={opt.id} key={opt.id}>
+                  {opt.name}
+                </ComboboxOption>
+              ))}
+            </Combobox>
+          )}
           <FieldHint />
           <FieldError />
         </Stack>
       </Field>
     </Box>
-  )
-}
+  );
+};
 
-export default Input
+export default Input;
