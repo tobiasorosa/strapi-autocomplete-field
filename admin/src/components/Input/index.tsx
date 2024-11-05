@@ -68,11 +68,12 @@ const Input = ({
   onChange(v: string): void
   value: string
 }) => {
-  const { formatMessage } = useIntl()
-  const ref = useRef("")
   const [options, setOptions] = useState<IOption[]>([])
+  const [selectedOption, setSelectedOption] = useState('');
 
-  console.log(attribute.options.apiUrl);
+  function onSelected(item: string) {
+    setSelectedOption(item);
+  }
 
   useEffect(() => {
     const fetchData = async () => {
@@ -87,7 +88,6 @@ const Input = ({
         }
         const response = await axios.get(attribute.options.apiUrl, options);
 
-        console.log(response.data)
         setOptions(response.data);
       } catch (err) {
         console.error(err);
@@ -100,10 +100,7 @@ const Input = ({
   return (
     <Box>
         <Stack spacing={1}>
-          <Flex>
-            <FieldLabel>{formatMessage(intlLabel)}</FieldLabel>
-          </Flex>
-          <Combobox value={initialValue} onChange={(value: string) => onChange(value)} ref={ref} placeholder="Selecione" error={error}>
+          <Combobox value={selectedOption} placeholder="Selecione" error={error} onChange={onSelected}>
             {options.map(opt => (
               <ComboboxOption value={opt.id} key={opt.id}>{opt.name}</ComboboxOption>
             ))}
