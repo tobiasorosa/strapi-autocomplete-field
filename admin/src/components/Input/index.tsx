@@ -46,27 +46,9 @@ export const FieldActionWrapper = styled(FieldAction)`
 
 const Input = ({
   attribute,
-  description,
-  placeholder,
-  disabled,
-  error,
-  intlLabel,
-  labelAction,
-  name,
-  onChange,
-  value: initialValue = "",
   ...props
 }: {
   attribute: CFAttribute
-  description: any
-  placeholder: string
-  disabled: boolean
-  error: boolean
-  intlLabel: any
-  labelAction: string
-  name: string
-  onChange(v: string): void
-  value: string
 }) => {
   const [options, setOptions] = useState<IOption[]>([])
   const [selectedOption, setSelectedOption] = useState('');
@@ -100,7 +82,7 @@ const Input = ({
   return (
     <Box>
         <Stack spacing={1}>
-          <Combobox value={selectedOption} placeholder="Selecione" error={error} onChange={onSelected}>
+          <Combobox {...props}>
             {options.map(opt => (
               <ComboboxOption value={opt.id} key={opt.id}>{opt.name}</ComboboxOption>
             ))}
