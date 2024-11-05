@@ -112,13 +112,13 @@ const Input = ({
           <Flex>
             <FieldLabel>{formatMessage(intlLabel)}</FieldLabel>
           </Flex>
-          <Combobox value={initialValue} onChange={(value: string) => onChange(value)} ref={ref} placeholder="Selecione" error={error}>
+          <Combobox name={name} value={initialValue} onChange={(value: string) => onChange(value)} ref={ref} placeholder="Selecione" error={error}>
             {options.map(opt => (
-              <ComboboxOption value={opt.id}>{opt.name}</ComboboxOption>
+              <ComboboxOption value={opt.id} key={opt.id}>{opt.name}</ComboboxOption>
             ))}
           </Combobox>
-          <FieldHint />
           <FieldError />
+          <FieldHint />
         </Stack>
       </Field>
     </Box>
