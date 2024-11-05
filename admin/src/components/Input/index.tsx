@@ -68,7 +68,7 @@ const Input = ({
   intlLabel: any
   labelAction: string
   name: string
-  onChange(v: any): void
+  onChange(v: string): void
   value: string
 }) => {
   const { formatMessage } = useIntl()
@@ -112,7 +112,7 @@ const Input = ({
           <Flex>
             <FieldLabel>{formatMessage(intlLabel)}</FieldLabel>
           </Flex>
-          <Combobox value={initialValue} onChange={(value: any) => onChange({ name, value })} ref={ref} placeholder="Selecione" error={error}>
+          <Combobox value={initialValue} onChange={(value: string) => onChange(value)} ref={ref} placeholder="Selecione" error={error}>
             {options.map(opt => (
               <ComboboxOption value={opt.id}>{opt.name}</ComboboxOption>
             ))}
