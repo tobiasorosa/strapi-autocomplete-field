@@ -104,6 +104,12 @@ const Input = ({
     fetchData();
   }, []);
 
+  const handleChange = (value: any) => {
+    if (onChange && name) {
+      onChange({ name, value });
+    }
+  };
+
   return (
     <Box>
       <Field id={name} name={name} hint={description && formatMessage(description)} error={error}>
@@ -111,11 +117,11 @@ const Input = ({
           <Flex>
             <FieldLabel>{formatMessage(intlLabel)}</FieldLabel>
           </Flex>
-          {name && onChange && (
+          {name && (
             <Combobox
               name={name}
               value={initialValue}
-              onChange={(value: any) => onChange({ name, value })}
+              onChange={handleChange}
               placeholder="Selecione"
               error={error}
             >
