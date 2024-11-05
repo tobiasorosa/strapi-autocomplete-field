@@ -80,18 +80,21 @@ const Input = ({
   useEffect(() => {
     const fetchData = async () => {
       try {
-        let options
+        let config
         if (attribute.options.authToken) {
-          options = {
+          config = {
             headers: {
               Authorization: `Bearer ${attribute.options.authToken}`,
             }
           }
         }
-        const response = await axios.get(attribute.options.apiUrl, options);
+        const response = await axios.get(attribute.options.apiUrl, config);
 
         console.log(response.data)
         setOptions(response.data);
+
+        onChange(options[0].id);
+
       } catch (err) {
         console.error(err);
       }
