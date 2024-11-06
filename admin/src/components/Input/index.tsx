@@ -105,10 +105,10 @@ const Input = ({
   }, []);
 
   const handleChange = (value: any) => {
-    console.log({value: value});
+    console.log({value: value.toString()});
     console.log('passou')
     if (onChange && name) {
-      onChange({ target: { name: 'customField', value: value } });
+      onChange({ target: { name: 'customField', value: value.toString() } });
     }
   };
 
