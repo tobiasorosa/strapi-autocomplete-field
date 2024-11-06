@@ -105,10 +105,10 @@ const Input = ({
   }, []);
 
   const handleChange = (value: any) => {
-    console.log({value: value.toString()});
+    console.log({value: value});
     console.log('passou')
     if (onChange && name) {
-      onChange({ target: { name: name, value: value.toString() } });
+      onChange({ target: { name: name, value: value } });
     }
   };
 
@@ -128,7 +128,7 @@ const Input = ({
               error={error}
             >
               {options.map((opt) => (
-                <ComboboxOption value={opt.id} key={opt.id}>
+                <ComboboxOption value={opt.id.toString()} key={opt.id}>
                   {opt.name}
                 </ComboboxOption>
               ))}
