@@ -105,8 +105,10 @@ const Input = ({
   }, []);
 
   const handleChange = (value: any) => {
+    console.log({value: value});
+    console.log('passou')
     if (onChange && name) {
-      onChange({ name, value });
+      onChange({ target: { name: 'customField', value: value } });
     }
   };
 
