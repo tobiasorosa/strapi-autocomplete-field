@@ -73,13 +73,6 @@ const Input = ({
   const { formatMessage } = useIntl();
   const [options, setOptions] = useState<IOption[]>([]);
 
-  console.log('Props:', {
-    name,
-    initialValue,
-    onChange,
-    attribute,
-  });
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -94,8 +87,6 @@ const Input = ({
         const response = await axios.get(attribute.options.apiUrl, config);
 
         setOptions(response.data);
-
-        onChange('1');
       } catch (err) {
         console.error(err);
       }
@@ -105,8 +96,6 @@ const Input = ({
   }, []);
 
   const handleChange = (value: any) => {
-    console.log({value: value});
-    console.log('passou')
     if (onChange && name) {
       onChange({ target: { name: name, value: value } });
     }
