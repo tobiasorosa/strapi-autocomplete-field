@@ -108,7 +108,7 @@ const Input = ({
     console.log({value: value.toString()});
     console.log('passou')
     if (onChange && name) {
-      onChange({ target: { name: 'customField', value: value.toString() } });
+      onChange({ target: { name: name, value: value.toString() } });
     }
   };
 
